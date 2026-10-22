@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>孕妇装复色 | 门槛 · 宽度 · 颜色策略</title>
+<style>
+  :root{
+    --bg:#f6f7fb; --card:#fff; --ink:#1f2430; --ink-2:#5b6478; --ink-3:#8b94a7;
+    --line:#e8ebf2; --brand:#5b6ef5; --brand-2:#8a6cf6; --pink:#f06a9b; --ok:#12b886;
+    --radius:16px; --shadow:0 6px 24px rgba(31,36,48,.06);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",Segoe UI,Roboto,sans-serif;
+    line-height:1.7;-webkit-font-smoothing:antialiased;}
+  a{color:var(--brand);text-decoration:none}
+
+  header{position:relative;overflow:hidden;
+    background:linear-gradient(120deg,#5b6ef5 0%,#8a6cf6 48%,#f06a9b 100%);
+    color:#fff;padding:56px 24px 88px;}
+  header::after{content:"";position:absolute;inset:auto -10% -60% -10%;height:200px;
+    background:var(--bg);border-radius:50% 50% 0 0 / 100% 100% 0 0;}
+  .wrap{max-width:1240px;margin:0 auto;position:relative;z-index:2}
+  .eyebrow{display:inline-block;font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+    background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);
+    padding:5px 12px;border-radius:999px;margin-bottom:18px;}
+  h1{margin:0 0 10px;font-size:40px;letter-spacing:.02em;font-weight:800}
+  .sub{margin:0;opacity:.92;font-size:15px;max-width:760px}
+  .meta{margin-top:18px;font-size:13px;opacity:.85;display:flex;gap:18px;flex-wrap:wrap}
+
+  nav{max-width:1240px;margin:-44px auto 0;position:sticky;top:12px;z-index:20;
+    background:rgba(255,255,255,.92);backdrop-filter:blur(10px);
+    border:1px solid var(--line);border-radius:999px;padding:8px;
+    display:flex;gap:6px;justify-content:center;flex-wrap:wrap;box-shadow:var(--shadow);}
+  nav a{font-size:14px;color:var(--ink-2);padding:8px 18px;border-radius:999px;font-weight:600;transition:.2s}
+  nav a:hover{background:#eef0fe;color:var(--brand)}
+
+  main{max-width:1240px;margin:0 auto;padding:40px 24px 80px}
+  section{margin-bottom:56px;scroll-margin-top:90px}
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:6px}
+  .sec-num{font-family:Georgia,serif;font-size:34px;font-weight:700;color:#dfe3f5;line-height:1}
+  h2{font-size:24px;margin:0;letter-spacing:.01em}
+  h3.blk{font-size:17px;margin:32px 0 12px}
+  .sec-desc{color:var(--ink-2);font-size:14px;margin:10px 0 24px;max-width:960px}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--shadow);overflow:hidden}
+  .scroll{overflow-x:auto}
+
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  thead th{background:#f4f5fb;color:var(--ink-2);font-weight:700;text-align:left;
+    padding:13px 14px;border-bottom:1px solid var(--line);white-space:nowrap;font-size:12.5px;letter-spacing:.03em}
+  tbody td{padding:12px 14px;border-bottom:1px solid #f0f2f8;vertical-align:top}
+  tbody tr:last-child td{border-bottom:none}
+  tbody tr:hover{background:#fbfbfe}
+  td.cat{font-weight:700;white-space:nowrap}
+  .mono{font-variant-numeric:tabular-nums}
+
+  /* 总览表 */
+  table.overview{min-width:1120px;font-size:13px}
+  table.overview th,table.overview td{padding:11px 12px}
+  table.overview thead th{position:sticky;top:0;background:#eef0fb;z-index:2}
+  table.overview td:first-child,table.overview th:first-child{
+    position:sticky;left:0;background:#fafbff;z-index:1;border-right:1px solid var(--line);font-weight:700}
+  table.overview thead th:first-child{z-index:3;background:#e7eaf9}
+  .col-p1{background:#f4fbf7}
+  .col-p2{background:#f7fbff}
+  .col-p3{background:#fffaf3}
+  .col-cut{background:#fdf7f7}
+  .wtag{display:inline-block;padding:2px 9px;border-radius:8px;background:#eef0fe;color:var(--brand);
+    font-size:12px;font-weight:800;white-space:nowrap}
+
+  .badge{display:inline-block;min-width:38px;text-align:center;padding:3px 10px;border-radius:8px;
+    font-size:12px;font-weight:800;letter-spacing:.04em}
+  .p0{background:#ffe9ef;color:#d6336c}.p1{background:#fff3e0;color:#c96a00}
+  .p2{background:#fff8dd;color:#9a7600}.p3{background:#e8f7ef;color:#0b8a5f}
+  .p4{background:#e9f1ff;color:#2b62c9}.p5{background:#f1eefe;color:#6b46c1}
+
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px;margin-bottom:26px}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)}
+  .kpi .v{font-size:30px;font-weight:800;letter-spacing:-.02em;line-height:1.2}
+  .kpi .v small{font-size:15px;font-weight:600;color:var(--ink-2);margin-left:2px}
+  .kpi .k{font-size:13px;color:var(--ink-3);margin-top:6px}
+  .kpi:nth-child(1) .v{color:var(--brand)}.kpi:nth-child(2) .v{color:var(--brand-2)}
+  .kpi:nth-child(3) .v{color:var(--pink)}.kpi:nth-child(4) .v{color:var(--ok)}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+  .wcard{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:20px;box-shadow:var(--shadow);transition:.2s}
+  .wcard:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(31,36,48,.10)}
+  .wcard h4{margin:0 0 4px;font-size:16px}
+  .wcard .range{display:inline-block;margin:8px 0 12px;padding:3px 10px;border-radius:999px;
+    background:#eef0fe;color:var(--brand);font-size:12px;font-weight:800}
+  .wcard p{margin:0;font-size:13.5px;color:var(--ink-2)}
+
+  .dir{display:flex;flex-wrap:wrap;gap:5px}
+  .chip{display:inline-block;padding:1px 8px;border-radius:6px;background:#f3f4fa;
+    color:#454d63;font-size:12.5px;white-space:nowrap}
+  .chip.hot{background:#ffe9ef;color:#d6336c;font-weight:700}
+  .chip-add{background:#e8f7ef;color:#0b8a5f}
+  .chip-cut{background:#fdeceb;color:#c0392b}
+  .chip-p1{background:#e8f7ef;color:#0b8a5f;font-weight:700}
+  .chip-p2{background:#e9f1ff;color:#2b62c9}
+  .chip-p3{background:#fff3e0;color:#c96a00}
+
+  .note{border-left:3px solid var(--brand);background:#f7f8ff;padding:14px 18px;border-radius:0 12px 12px 0;
+    font-size:13.5px;color:var(--ink-2);margin:18px 0 0}
+  .note b{color:var(--ink)}
+  .flow{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin:18px 0 0}
+  .flow .step{background:#fff;border:1px dashed #d9ddef;border-radius:12px;padding:14px 16px;font-size:13.5px;color:var(--ink-2)}
+  .flow .step b{display:block;color:var(--ink);margin-bottom:4px;font-size:14px}
+  .flow .step.p1{border-color:#bfe8d4;background:#f6fdf9}
+  .flow .step.p2{border-color:#cfdcf7;background:#f8fbff}
+  .flow .step.p3{border-color:#f6dcb8;background:#fffaf4}
+
+  footer{text-align:center;color:var(--ink-3);font-size:12.5px;padding:0 24px 48px}
+  @media (max-width:640px){
+    header{padding:40px 18px 72px} h1{font-size:28px} .sec-num{font-size:26px}
+    table{font-size:13px} thead th,tbody td{padding:9px 10px}
+    .table-scroll{overflow-x:auto}.table-scroll table{min-width:620px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <span class="eyebrow">Maternity · Color Strategy</span>
+    <h1>孕妇装复色</h1>
+    <p class="sub">从「复色门槛」到「复多少色」，再到「复什么色」——一套可落地的孕妇装复色方法论：先定优先级与门槛，再定 SKC 宽度，最后按站内外颜色结构定具体复色方向。</p>
+    
+  </div>
+</header>
+
+<nav>
+  <a href="#s1">一 · 复色门槛</a>
+  <a href="#s2">二 · 复多少色</a>
+  <a href="#s3">三 · 复什么色</a>
+</nav>
+
+<main>
+
+  <!-- ===== 一 ===== -->
+  <section id="s1">
+    <div class="sec-head"><span class="sec-num">01</span><h2>复色门槛</h2></div>
+    <p class="sec-desc">按上架时间与款式生命周期分层，对应不同优先级与近 15 天日均销量最低值限定，先圈定「值得复色」的款，再谈宽度与颜色。</p>
+    <div class="card table-scroll">
+      <table>
+        <thead>
+          <tr><th>类目</th><th>分类</th><th>上架时间范围</th><th>优先级</th><th>推荐类型</th><th>近15天日均最低值限定</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="cat" rowspan="6">孕妇装</td><td>7日新款</td><td class="mono">近 7 天</td><td><span class="badge p0">P0</span></td><td>7 天内上架热卖款</td><td class="mono">5</td></tr>
+          <tr><td>当月新款</td><td class="mono">近 8–30 天</td><td><span class="badge p1">P1</span></td><td>8–30 天内上架热卖款</td><td class="mono">5</td></tr>
+          <tr><td>3个月内款</td><td class="mono">近 31–90 天</td><td><span class="badge p2">P2</span></td><td>31–90 天内上架热卖款</td><td class="mono">10</td></tr>
+          <tr><td>去年上架应季款</td><td class="mono">T365 ± 60</td><td><span class="badge p3">P3</span></td><td>去年同期上架、去年同期热卖</td><td class="mono">10</td></tr>
+          <tr><td>长青款</td><td class="mono">近 90–305 天</td><td><span class="badge p4">P4</span></td><td>非应季长青款</td><td class="mono">10</td></tr>
+          <tr><td>老款</td><td class="mono">425 天以上</td><td><span class="badge p5">P5</span></td><td>上架超 1 年、近期热卖款</td><td class="mono">15</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ===== 二 ===== -->
+  <section id="s2">
+    <div class="sec-head"><span class="sec-num">02</span><h2>复多少色 · by 一层品类</h2></div>
+    <p class="sec-desc">用「爆旺款效率」与「均件数」两条曲线找每个品类的最优 SKC 宽度：取边际均件量与爆旺率连续为正的最后一个宽度，下一宽度转负即止。</p>
+
+    <div class="kpis">
+      <div class="kpi"><div class="v">1516<small>款</small></div><div class="k">在售企划标签商品</div></div>
+      <div class="kpi"><div class="v">439<small>款</small></div><div class="k">爆旺款</div></div>
+      <div class="kpi"><div class="v">28.96<small>%</small></div><div class="k">整体爆旺款率</div></div>
+      <div class="kpi"><div class="v">34.2<small>件/款</small></div><div class="k">均件数</div></div>
+    </div>
+
+    <div class="note">
+      <b>整体结论：</b>除文胸外，长裤、连衣裙/半裙、T恤/POLO、家居服/裙/袍、套装、背心上衣的 2 色 / 3 色在爆旺率与均件数上均显著优于 1 色，<b>复色红利普遍存在</b>；多品类主流结构仍高度集中在 1 色，复色空间充足。
+    </div>
+
+    <div class="grid" style="margin-top:20px">
+      <div class="wcard"><h4>文胸</h4><span class="range">复色范围 4 / 7 个</span>
+        <p>4/7 色为爆旺率、均件数的稳定双优区间；1 色爆旺率偏低且均件数最低。</p></div>
+      <div class="wcard"><h4>长裤</h4><span class="range">复色范围 3 个</span>
+        <p>3 色款爆旺率为全场最高，且均件数成倍领先；整体以 1 色为主，可重点复色。</p></div>
+      <div class="wcard"><h4>连衣裙 / 半裙</h4><span class="range">复色范围 3 个</span>
+        <p>2 色款爆旺率为全场最高；颜色数高度集中于 1 色，复色空间大。</p></div>
+      <div class="wcard"><h4>T恤 / POLO</h4><span class="range">复色范围 4 个左右</span>
+        <p>2 色爆旺率显著高于 1 色，3 色进一步提升，4 色最高；1 色爆旺率最低、均件数最弱，是主要拖累项。</p></div>
+      <div class="wcard"><h4>家居服 / 裙 / 袍</h4><span class="range">复色范围 3 个</span>
+        <p>3 色款爆旺率全场最高；1 色基础款可重点拓展。</p></div>
+      <div class="wcard"><h4>套装</h4><span class="range">复色范围 3–4 个</span>
+        <p>3 色款爆旺率为全场最高；1 色爆旺率最低，为主要拖累。</p></div>
+      <div class="wcard"><h4>背心上衣</h4><span class="range">复色范围 3–4 个</span>
+        <p>3 色款爆旺率为全场最高；1 色款爆旺率最低，几乎全部不爆。</p></div>
+    </div>
+  </section>
+
+  <!-- ===== 三 ===== -->
+  <section id="s3">
+    <div class="sec-head"><span class="sec-num">03</span><h2>复什么色 · by 一层品类</h2></div>
+    <p class="sec-desc">优先级规则 → 重点品类复色结论总览 → 站内供需结构 → 站外竞对颜色结构，逐层收窄到可执行的颜色清单。</p>
+
+    <h3 class="blk">1. 重点品类 · 复色参考说明</h3>
+    <div class="flow">
+      <div class="step p1"><b>P1 优先级复色</b>优先复色「站内 + 站外」同时出现的 TOP 颜色。</div>
+      <div class="step p2"><b>P2 优先级复色</b>若已有 P1 的 TOP 颜色，优先补站内 TOP5 内缺失的颜色。</div>
+      <div class="step p3"><b>P3 优先级复色</b>若已有 P1、P2 的颜色，优先补站外 TOP5 内缺失的颜色。</div>
+    </div>
+
+    <h3 class="blk">2. 孕妇装重点品类 · 复色结论总览</h3>
+    <div class="card scroll">
+      <table class="overview">
+        <thead>
+          <tr>
+            <th>品类一层</th><th>推荐 SKC 宽度</th><th>站内 TOP 色</th><th>站外 TOP 色</th>
+            <th class="col-p1">P1 复色 · 站内站外重复</th><th class="col-p2">P2 复色 · 站内 TOP 色</th>
+            <th class="col-p3">P3 复色 · 站外 TOP 色</th><th class="col-cut">观察 / 汰换色</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>文胸</td><td><span class="wtag">4/7</span></td>
+            <td><div class="dir"><span class="chip">混色</span><span class="chip">黑色</span><span class="chip">海蓝色</span><span class="chip">浅灰色</span><span class="chip">白色</span></div></td>
+            <td><div class="dir"><span class="chip">混色</span><span class="chip">黑色</span><span class="chip">白色</span><span class="chip">杏色</span><span class="chip">粉色</span></div></td>
+            <td class="col-p1"><div class="dir"><span class="chip chip-p1">混色</span><span class="chip chip-p1">黑色</span><span class="chip chip-p1">白色</span></div></td>
+            <td class="col-p2"><div class="dir"><span class="chip chip-p2">海蓝色</span><span class="chip chip-p2">浅灰色</span></div></td>
+            <td class="col-p3"><div class="dir"><span class="chip chip-p3">杏色</span><span class="chip chip-p3">粉色</span></div></td>
+            <td class="col-cut"><div class="dir"><span class="chip chip-cut">灰色</span><span class="chip chip-cut">红色</span><span class="chip chip-cut">酒红色</span><span class="chip chip-cut">土黄色</span></div></td>
+          </tr>
+          <tr>
+            <td>长裤</td><td><span class="wtag">3</span></td>
+            <td><div class="dir"><span class="chip">黑色</span><span class="chip">浅灰色</span><span class="chip">粉红色</span><span class="chip">浅棕色</span><span class="chip">杏色</span></div></td>
+            <td><div class="dir"><span class="chip">黑色</span><span class="chip">藏蓝色</span><span class="chip">卡其色</span><span class="chip">杏色</span><span class="chip">棕色</span></div></td>
+            <td class="col-p1"><div class="dir"><span class="chip chip-p1">黑色</span><span class="chip chip-p1">杏色</span></div></td>
+            <td class="col-p2"><div class="dir"><span class="chip chip-p2">浅灰色</span><span class="chip chip-p2">粉红色</span><span class="chip chip-p2">浅棕色</span></div></td>
+            <td class="col-p3"><div class="dir"><span class="chip chip-p3">藏蓝色</span><span class="chip chip-p3">卡其色</span><span class="chip chip-p3">棕色</span></div></td>
+            <td class="col-cut"><div class="dir"><span class="chip chip-cut">灰色</span><span class="chip chip-cut">混色</span><span class="chip chip-cut">蓝色</span><span class="chip chip-cut">深灰色</span></div></td>
+          </tr>
+          <tr>
+            <td>连衣裙/半裙</td><td><span class="wtag">3</span></td>
+            <td><div class="dir"><span class="chip">白色</span><span class="chip">杏色</span><span class="chip">卡其色</span><span class="chip">蓝色</span><span class="chip">混色</span></div></td>
+            <td><div class="dir"><span class="chip">黑色</span><span class="chip">棕色</span><span class="chip">白色</span><span class="chip">杏色</span><span class="chip">酒红色</span></div></td>
+            <td class="col-p1"><div class="dir"><span class="chip chip-p1">白色</span><span class="chip chip-p1">杏色</span></div></td>
+            <td class="col-p2"><div class="dir"><span class="chip chip-p2">卡其色</span><span class="chip chip-p2">蓝色</span><span class="chip chip-p2">混色</span></div></td>
+            <td class="col-p3"><div class="dir"><span class="chip chip-p3">黑色</span><span class="chip chip-p3">棕色</span><span class="chip chip-p3">酒红色</span></div></td>
+            <td class="col-cut"><div class="dir"><span class="chip chip-cut">灰色</span><span class="chip chip-cut">粉红色</span><span class="chip chip-cut">海蓝色</span><span class="chip chip-cut">浅黄色</span></div></td>
+          </tr>
+          <tr>
+            <td>T恤/POLO</td><td><span class="wtag">4</span></td>
+            <td><div class="dir"><span class="chip">黑色</span><span class="chip">白色</span><span class="chip">杏色</span><span class="chip">粉红色</span><span class="chip">卡其色</span></div></td>
+            <td><div class="dir"><span class="chip">黑色</span><span class="chip">白色</span><span class="chip">杏色</span><span class="chip">粉色</span><span class="chip">酒红色</span></div></td>
+            <td class="col-p1"><div class="dir"><span class="chip chip-p1">黑色</span><span class="chip chip-p1">白色</span><span class="chip chip-p1">杏色</span><span class="chip chip-p1">粉红色</span></div></td>
+            <td class="col-p2"><div class="dir"><span class="chip chip-p2">卡其色</span></div></td>
+            <td class="col-p3"><div class="dir"><span class="chip chip-p3">酒红色</span></div></td>
+            <td class="col-cut"><div class="dir"><span class="chip chip-cut">混色</span><span class="chip chip-cut">花色</span><span class="chip chip-cut">浅青色</span><span class="chip chip-cut">小麦色</span><span class="chip chip-cut">桃色</span></div></td>
+          </tr>
+          <tr>
+            <td>家居服/裙/袍</td><td><span class="wtag">3</span></td>
+            <td><div class="dir"><span class="chip">黑色</span><span class="chip">杏色</span><span class="chip">深红</span><span class="chip">花色</span><span class="chip">砖红色</span></div></td>
+            <td><div class="dir"><span class="chip">黑色</span><span class="chip">蓝色</span><span class="chip">灰粉色</span><span class="chip">粉色</span><span class="chip">卡其色</span></div></td>
+            <td class="col-p1"><div class="dir"><span class="chip chip-p1">黑色</span></div></td>
+            <td class="col-p2"><div class="dir"><span class="chip chip-p2">杏色</span><span class="chip chip-p2">深红</span><span class="chip chip-p2">花色</span><span class="chip chip-p2">砖红色</span></div></td>
+            <td class="col-p3"><div class="dir"><span class="chip chip-p3">蓝色</span><span class="chip chip-p3">灰粉色</span><span class="chip chip-p3">粉色</span><span class="chip chip-p3">卡其色</span></div></td>
+            <td class="col-cut"><div class="dir"><span class="chip chip-cut">混色</span><span class="chip chip-cut">浅蓝色</span><span class="chip chip-cut">白色</span><span class="chip chip-cut">浅绿色</span><span class="chip chip-cut">柠檬黄</span></div></td>
+          </tr>
+          <tr>
+            <td>套装</td><td><span class="wtag">3</span></td>
+            <td><div class="dir"><span class="chip">杏色</span><span class="chip">卡其色</span><span class="chip">深棕色</span><span class="chip">浅棕色</span><span class="chip">黄色</span></div></td>
+            <td><div class="dir"><span class="chip">黑色</span><span class="chip">棕色</span><span class="chip">杏色</span><span class="chip">粉色</span><span class="chip">卡其色</span></div></td>
+            <td class="col-p1"><div class="dir"><span class="chip chip-p1">杏色</span><span class="chip chip-p1">卡其色</span></div></td>
+            <td class="col-p2"><div class="dir"><span class="chip chip-p2">深棕色</span><span class="chip chip-p2">浅棕色</span><span class="chip chip-p2">黄色</span></div></td>
+            <td class="col-p3"><div class="dir"><span class="chip chip-p3">黑色</span><span class="chip chip-p3">棕色</span><span class="chip chip-p3">粉色</span></div></td>
+            <td class="col-cut"><div class="dir"><span class="chip chip-cut">混色</span><span class="chip chip-cut">绿色</span><span class="chip chip-cut">军绿色</span><span class="chip chip-cut">浅灰色</span><span class="chip chip-cut">白色</span></div></td>
+          </tr>
+          <tr>
+            <td>背心上衣</td><td><span class="wtag">3~4</span></td>
+            <td><div class="dir"><span class="chip">蓝色</span><span class="chip">深灰色</span><span class="chip">绿色</span><span class="chip">深绿色</span><span class="chip">混色</span></div></td>
+            <td><div class="dir"><span class="chip">黑色</span><span class="chip">白色</span><span class="chip">酒红色</span><span class="chip">咖啡棕色</span><span class="chip">杏色</span></div></td>
+            <td class="col-p1"><div class="dir"><span class="chip chip-p1">蓝色</span><span class="chip chip-p1">深灰色</span><span class="chip chip-p1">绿色</span><span class="chip chip-p1">深绿色</span><span class="chip chip-p1">混色</span></div></td>
+            <td class="col-p2"><div class="dir"><span class="chip chip-p2">蓝色</span><span class="chip chip-p2">深灰色</span><span class="chip chip-p2">绿色</span><span class="chip chip-p2">深绿色</span><span class="chip chip-p2">混色</span></div></td>
+            <td class="col-p3"><div class="dir"><span class="chip chip-p3">黑色</span><span class="chip chip-p3">白色</span><span class="chip chip-p3">酒红色</span><span class="chip chip-p3">咖啡棕色</span><span class="chip chip-p3">杏色</span></div></td>
+            <td class="col-cut"><div class="dir"><span class="chip chip-cut">奶白色</span><span class="chip chip-cut">浅灰色</span></div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="sec-desc" style="margin-top:10px;font-size:13px">注：表中 P1/P2/P3 与观察汰换色均按文档原文整理；背心上衣 P2 与 P1 内容一致，实际执行时可优先补齐站内其余 TOP 色。</p>
+
+    <h3 class="blk">3. 站内一层品类复色分析</h3>
+    <div class="note" style="margin-bottom:16px">
+      <b>指标口径：</b>GMV 效率 = 该颜色的实付 GMV ÷ 该颜色在售 SKC 数；供需差 = GMV 占比 − SKC 占比（正 = 需求缺口，卖得多货少）；件量转化率 = 支付商品件数 ÷ 在售 SKC 数。
+    </div>
+    <div class="card table-scroll">
+      <table>
+        <thead>
+          <tr><th>一层品类</th><th>复色方向</th><th>销量 TOP5</th><th>供需差 TOP10 · 补充颜色方向</th><th>供需差 TOP10 · 过剩 / 汰换</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="cat">文胸</td>
+            <td><div class="dir"><span class="chip hot">混色</span><span class="chip hot">黑色</span><span class="chip">海蓝</span><span class="chip">浅灰</span><span class="chip">白色</span></div></td>
+            <td><div class="dir"><span class="chip">黑色</span><span class="chip">混合色</span><span class="chip">肤色</span><span class="chip">杏色</span><span class="chip">粉红</span></div></td>
+            <td><div class="dir"><span class="chip chip-add">混色</span><span class="chip chip-add">黑色</span><span class="chip chip-add">海蓝色</span><span class="chip chip-add">浅灰色</span><span class="chip chip-add">白色</span></div></td>
+            <td><div class="dir"><span class="chip chip-cut">灰色</span><span class="chip chip-cut">红色</span><span class="chip chip-cut">粉红色</span><span class="chip chip-cut">酒红色</span><span class="chip chip-cut">土黄色</span></div></td>
+          </tr>
+          <tr>
+            <td class="cat">长裤</td>
+            <td><div class="dir"><span class="chip hot">黑色</span><span class="chip hot">浅灰</span><span class="chip">粉红</span><span class="chip">浅棕</span><span class="chip">杏色</span></div></td>
+            <td><div class="dir"><span class="chip">黑色</span><span class="chip">浅灰</span><span class="chip">灰色</span><span class="chip">杏色</span><span class="chip">深灰</span></div></td>
+            <td><div class="dir"><span class="chip chip-add">黑色</span><span class="chip chip-add">浅灰色</span><span class="chip chip-add">粉红色</span><span class="chip chip-add">浅棕色</span><span class="chip chip-add">杏色</span></div></td>
+            <td><div class="dir"><span class="chip chip-cut">灰色</span><span class="chip chip-cut">混色</span><span class="chip chip-cut">蓝色</span><span class="chip chip-cut">深灰色</span><span class="chip chip-cut">深棕色</span></div></td>
+          </tr>
+          <tr>
+            <td class="cat">连衣裙/半裙</td>
+            <td><div class="dir"><span class="chip hot">白色</span><span class="chip hot">杏色</span><span class="chip">卡其</span><span class="chip">蓝色</span><span class="chip">混色</span></div></td>
+            <td><div class="dir"><span class="chip">黑色</span><span class="chip">白色</span><span class="chip">粉红</span><span class="chip">混合色</span><span class="chip">杏色</span></div></td>
+            <td><div class="dir"><span class="chip chip-add">白色</span><span class="chip chip-add">杏色</span><span class="chip chip-add">卡其色</span><span class="chip chip-add">蓝色</span><span class="chip chip-add">混色</span></div></td>
+            <td><div class="dir"><span class="chip chip-cut">灰色</span><span class="chip chip-cut">粉红色</span><span class="chip chip-cut">黑色</span><span class="chip chip-cut">海蓝色</span><span class="chip chip-cut">浅黄色</span></div></td>
+          </tr>
+          <tr>
+            <td class="cat">T恤/POLO</td>
+            <td><div class="dir"><span class="chip hot">黑色</span><span class="chip hot">白色</span><span class="chip">杏色</span><span class="chip">粉红</span><span class="chip">卡其色</span></div></td>
+            <td><div class="dir"><span class="chip">黑色</span><span class="chip">混合色</span><span class="chip">白色</span><span class="chip">杏色</span><span class="chip">粉红</span></div></td>
+            <td><div class="dir"><span class="chip chip-add">黑色</span><span class="chip chip-add">白色</span><span class="chip chip-add">杏色</span><span class="chip chip-add">粉红色</span><span class="chip chip-add">卡其色</span></div></td>
+            <td><div class="dir"><span class="chip chip-cut">混色</span><span class="chip chip-cut">花色</span><span class="chip chip-cut">浅青色</span><span class="chip chip-cut">小麦色</span><span class="chip chip-cut">桃色</span></div></td>
+          </tr>
+          <tr>
+            <td class="cat">家居服/裙/袍</td>
+            <td><div class="dir"><span class="chip hot">黑色</span><span class="chip hot">杏色</span><span class="chip">深红</span><span class="chip">花色</span><span class="chip">砖红</span></div></td>
+            <td><div class="dir"><span class="chip">混合色</span><span class="chip">黑色</span><span class="chip">混色</span><span class="chip">杏色</span><span class="chip">粉红</span></div></td>
+            <td><div class="dir"><span class="chip chip-add">黑色</span><span class="chip chip-add">杏色</span><span class="chip chip-add">深红</span><span class="chip chip-add">花色</span><span class="chip chip-add">砖红色</span></div></td>
+            <td><div class="dir"><span class="chip chip-cut">混色</span><span class="chip chip-cut">浅蓝色</span><span class="chip chip-cut">白色</span><span class="chip chip-cut">浅绿色</span><span class="chip chip-cut">柠檬黄</span></div></td>
+          </tr>
+          <tr>
+            <td class="cat">套装</td>
+            <td><div class="dir"><span class="chip hot">杏色</span><span class="chip hot">卡其</span><span class="chip">深棕</span><span class="chip">浅棕</span><span class="chip">黄色</span></div></td>
+            <td><div class="dir"><span class="chip">黑色</span><span class="chip">杏色</span><span class="chip">卡其色</span><span class="chip">深棕</span><span class="chip">混合色</span></div></td>
+            <td><div class="dir"><span class="chip chip-add">杏色</span><span class="chip chip-add">卡其色</span><span class="chip chip-add">深棕色</span><span class="chip chip-add">浅棕色</span><span class="chip chip-add">黄色</span></div></td>
+            <td><div class="dir"><span class="chip chip-cut">混色</span><span class="chip chip-cut">绿色</span><span class="chip chip-cut">军绿色</span><span class="chip chip-cut">浅灰色</span><span class="chip chip-cut">白色</span></div></td>
+          </tr>
+          <tr>
+            <td class="cat">背心上衣</td>
+            <td><div class="dir"><span class="chip hot">蓝色</span><span class="chip hot">深灰</span><span class="chip">绿色</span><span class="chip">深绿</span><span class="chip">肤色</span></div></td>
+            <td><div class="dir"><span class="chip">黑色</span><span class="chip">白色</span><span class="chip">混合色</span><span class="chip">粉红</span><span class="chip">蓝色</span></div></td>
+            <td><div class="dir"><span class="chip chip-add">蓝色</span><span class="chip chip-add">深灰色</span><span class="chip chip-add">绿色</span><span class="chip chip-add">深绿色</span><span class="chip chip-add">混色</span></div></td>
+            <td><div class="dir"><span class="chip chip-cut">杏色</span><span class="chip chip-cut">白色</span><span class="chip chip-cut">黑色</span><span class="chip chip-cut">奶白色</span><span class="chip chip-cut">酒红色</span></div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="blk">4. 站外复色分析</h3>
+    <div class="note" style="margin-bottom:16px">
+      <b>品类复色看板说明：</b>以竞对站外各品类配色记录为基准，对照站内同品类颜色规格，分析站外复色实际做到的范围、站内外颜色结构差异，以及下一批复色应新增的颜色。<br>
+      ·「本品类站外复色表现」：站外品类颜色中位数与颜色分布　·「站内外复色对比」：站内外颜色对比度　·「模拟复色」：基于已有颜色按复色优先级推荐颜色（仅供参考）。
+    </div>
+    <div class="card table-scroll">
+      <table>
+        <thead><tr><th>一层品类</th><th>SHEIN 颜色 Top20（Top5 摘要）</th></tr></thead>
+        <tbody>
+          <tr><td class="cat">文胸</td><td><div class="dir"><span class="chip">混色</span><span class="chip">黑色</span><span class="chip">白色</span><span class="chip">杏色</span><span class="chip">粉色</span></div></td></tr>
+          <tr><td class="cat">长裤</td><td><div class="dir"><span class="chip">黑色</span><span class="chip">藏蓝色</span><span class="chip">卡其色</span><span class="chip">杏色</span><span class="chip">棕色</span></div></td></tr>
+          <tr><td class="cat">连衣裙/半裙</td><td><div class="dir"><span class="chip">黑色</span><span class="chip">棕色</span><span class="chip">白色</span><span class="chip">杏色</span><span class="chip">酒红色</span></div></td></tr>
+          <tr><td class="cat">T恤/POLO</td><td><div class="dir"><span class="chip">黑色</span><span class="chip">白色</span><span class="chip">杏色</span><span class="chip">粉色</span><span class="chip">酒红色</span></div></td></tr>
+          <tr><td class="cat">家居服/裙/袍</td><td><div class="dir"><span class="chip">黑色</span><span class="chip">蓝色</span><span class="chip">灰粉色</span><span class="chip">粉色</span><span class="chip">卡其色</span></div></td></tr>
+          <tr><td class="cat">套装</td><td><div class="dir"><span class="chip">黑色</span><span class="chip">棕色</span><span class="chip">杏色</span><span class="chip">粉色</span><span class="chip">卡其色</span></div></td></tr>
+          <tr><td class="cat">背心上衣</td><td><div class="dir"><span class="chip">黑色</span><span class="chip">白色</span><span class="chip">酒红色</span><span class="chip">咖啡棕色</span><span class="chip">杏色</span></div></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  孕妇装复色 · 门槛 / 宽度 / 颜色三维策略
+</footer>
+
+</body>
+</html>
